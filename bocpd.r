@@ -2,7 +2,7 @@
 #Adams & Mackay (2007)
 #Using Exponential Conjugate (Normal - Inverse Gamma Distribution)
 
-#generate dx
+#Generate dx
 dx <- rep(1,100)
 for (i in 1:100) {
   if (i<= 40) {
@@ -13,7 +13,7 @@ for (i in 1:100) {
   }
 }
 
-#plot x
+#Plot x
 plot(dx,
      main="Plot Harga Buka Saham ANTM",
      ylab="harga",
