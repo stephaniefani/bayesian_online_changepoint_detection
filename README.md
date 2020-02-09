@@ -1,0 +1,2 @@
+# bayesian_online_changepoint_detection
+In statistical analysis, change detection or change point detection tries to identify times when the probability distribution of a stochastic process or time series changes. Using Bayesian Method &amp; Inferences, we can perform change point detection with online procedure. This is the code in R for Bayesian Online Change Point Detection by Adams&amp;Mackay (2007).
