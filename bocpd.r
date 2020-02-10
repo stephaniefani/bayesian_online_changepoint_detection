@@ -6,10 +6,10 @@
 dx <- rep(1,100)
 for (i in 1:100) {
   if (i<= 40) {
-    dx[i] <- rnorm(1,500,5)
+    dx[i] <- rnorm(1,500,5) #normal distribution with mean 500
   }
   else {
-    dx[i] <- rnorm(1,1200,5)
+    dx[i] <- rnorm(1,1200,5) #normal distribution with mean 1200
   }
 }
 
@@ -28,6 +28,8 @@ u0 <- 500
 w0 <- 10^-4
 a0 <- 1
 b0 <- 10^-5
+
+#prior hyperparameter tuning is needed to improve the model
 
 #loop
 #Initiate r (run length)
@@ -50,7 +52,7 @@ while (i <= 100) {
     #Predictive Distribution P(xt |xt-1) ~  T (unstandardized student-t)
     k <- u
     l <- (b*(w+1))/a*w
-    v <- 2*a 
+    v <- 2*a #degree of freedom
     
     p <- rep(0,1)
     p[r+2] <- (gamma((v+1)/2) / (sqrt(pi*v*l)*gamma(v/2))) * ((1+1/v*((x-k)^2)/l)^(-(v+1)/2))
@@ -65,7 +67,7 @@ while (i <= 100) {
     model1<-survreg(s1 ~ 1, dist="exponential")
     summary(model1)
     h <- exp(-(summary(model1)$table[,1]))
-    h <- 1/40
+    h <- 1/40 #set lambda
     
     #h = 0.04285714
     
@@ -93,7 +95,7 @@ while (i <= 100) {
     #Predictive Distribution P(xt |xt-1)
     k <- u
     l <- (b*(w+1))/a*w
-    v <- 2*a 
+    v <- 2*a #degree of freedom
     
     p[r+2] <- (gamma((v+1)/2) / (sqrt(pi*v*l)*gamma(v/2))) * ((1+1/v*((x-k)^2)/l)^(-(v+1)/2))
     
